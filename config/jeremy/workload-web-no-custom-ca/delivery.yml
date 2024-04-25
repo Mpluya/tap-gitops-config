@@ -40,7 +40,7 @@ spec:
       - env:
         - name: JAVA_TOOL_OPTIONS
           value: -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
-        image: cxscssa.azurecr.io/tap-build/workloads/workload-web-no-custom-ca-jeremy@sha256:704acbaecc0b42b3458ad43359a00e15958aea48fe7e12712542bded58456418
+        image: cxscssa.azurecr.io/tap-build/workloads/workload-web-no-custom-ca-jeremy@sha256:716561cd10ae0867fd40a4699fbd410ea238209ae9e10b111e72570306372ac8
         name: workload
         ports:
         - containerPort: 8080
