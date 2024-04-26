@@ -19,6 +19,8 @@ metadata:
   name: workload-server-with-custom-ca-workload-server-with-custom-ca
   annotations:
     autoscaling.knative.dev/minScale: "1"
+    x95castle1.org/livenessProbe: '{"httpGet":{"path": "/actuator/health","port":8080},"initialDelaySeconds": 25,"periodSeconds": 5}'
+    x95castle1.org/readinessProbe: '{"httpGet":{"path": "/actuator/health","port":8080},"initialDelaySeconds": 25,"periodSeconds": 5}'
     kapp.k14s.io/change-group: servicebinding.io/ServiceBindings
   labels:
     app.kubernetes.io/part-of: workload-server-with-custom-ca
@@ -44,6 +46,8 @@ metadata:
   name: workload-server-with-custom-ca-ca-cert
   annotations:
     autoscaling.knative.dev/minScale: "1"
+    x95castle1.org/livenessProbe: '{"httpGet":{"path": "/actuator/health","port":8080},"initialDelaySeconds": 25,"periodSeconds": 5}'
+    x95castle1.org/readinessProbe: '{"httpGet":{"path": "/actuator/health","port":8080},"initialDelaySeconds": 25,"periodSeconds": 5}'
     kapp.k14s.io/change-group: servicebinding.io/ServiceBindings
   labels:
     app.kubernetes.io/part-of: workload-server-with-custom-ca
