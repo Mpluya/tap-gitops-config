@@ -21,12 +21,16 @@ spec:
         boot.spring.io/version: 2.3.2.RELEASE
         conventions.carto.run/applied-conventions: |-
           appliveview-sample/app-live-view-appflavour-check
+          multi-purpose-convention/x95castle1.org-readiness
+          multi-purpose-convention/x95castle1.org-liveness
           spring-boot-convention/auto-configure-actuators-check
           spring-boot-convention/spring-boot
           spring-boot-convention/spring-boot-graceful-shutdown
           spring-boot-convention/spring-boot-web
           spring-boot-convention/app-live-view-appflavour-check
         developer.conventions/target-containers: workload
+        x95castle1.org/livenessProbe: '{"httpGet":{"path": "/actuator/health","port":8080},"initialDelaySeconds": 25,"periodSeconds": 5}'
+        x95castle1.org/readinessProbe: '{"httpGet":{"path": "/actuator/health","port":8080},"initialDelaySeconds": 25,"periodSeconds": 5}'
       labels:
         app.kubernetes.io/component: run
         app.kubernetes.io/part-of: workload-web-with-custom-ca
@@ -41,10 +45,22 @@ spec:
         - name: JAVA_TOOL_OPTIONS
           value: -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
         image: cxscssa.azurecr.io/tap-build/workloads/workload-web-with-custom-ca-jeremy@sha256:c5908308626a8f8c5ff6e790bca11ab856aaab2f275d7c2f8871baba28ff07db
+        livenessProbe:
+          httpGet:
+            path: /actuator/health
+            port: 8080
+          initialDelaySeconds: 25
+          periodSeconds: 5
         name: workload
         ports:
         - containerPort: 8080
           protocol: TCP
+        readinessProbe:
+          httpGet:
+            path: /actuator/health
+            port: 8080
+          initialDelaySeconds: 25
+          periodSeconds: 5
         resources: {}
         securityContext:
           runAsUser: 1000
