@@ -43,7 +43,7 @@ spec:
           value: -Dorg.springframework.cloud.bindings.boot.enable="true" -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
         - name: SPRING_PROFILES_ACTIVE
           value: cloud
-        image: cxscssa.azurecr.io/tap-build/workloads/sso-example-app-tap-jeremy@sha256:425adc5779c8c48bf9262aedb00bb69d94f6c5c25cd212b5015e01620c0d2e18
+        image: cxscssa.azurecr.io/tap-build/workloads/sso-example-app-tap-jeremy@sha256:ee05e646f70255a767a5243b1c7e201a112b3a205809c557bc999319d10a4bb3
         name: workload
         ports:
         - containerPort: 8080
