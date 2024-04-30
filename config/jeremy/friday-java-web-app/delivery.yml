@@ -16,6 +16,7 @@ spec:
   template:
     metadata:
       annotations:
+        apps.tanzu.vmware.com/correlationid: https://github.com/x95castle1/friday-java-web-app?sub_path=/
         boot.spring.io/version: 2.7.18
         conventions.carto.run/applied-conventions: |-
           appliveview-sample/app-live-view-appflavour-check
@@ -64,6 +65,18 @@ spec:
             scheme: HTTP
         resources: {}
         securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          runAsNonRoot: true
           runAsUser: 1000
+          seccompProfile:
+            type: RuntimeDefault
+        startupProbe:
+          httpGet:
+            path: /readyz
+            port: 8080
+            scheme: HTTP
       serviceAccountName: default
 
