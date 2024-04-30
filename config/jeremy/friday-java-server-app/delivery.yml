@@ -30,7 +30,7 @@ spec:
   template:
     metadata:
       annotations:
-        boot.spring.io/version: 2.7.12
+        boot.spring.io/version: 2.7.18
         conventions.carto.run/applied-conventions: |-
           appliveview-sample/app-live-view-appflavour-check
           spring-boot-convention/auto-configure-actuators-check
@@ -63,7 +63,7 @@ spec:
       - env:
         - name: JAVA_TOOL_OPTIONS
           value: -Dmanagement.endpoint.health.probes.add-additional-paths="true" -Dmanagement.health.probes.enabled="true" -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
-        image: cxscssa.azurecr.io/tap-build/workloads/friday-java-server-app-jeremy@sha256:44033922987d99b01276c06bd517db8304c5c9a1e9d617dcf9ff8d207ef7155f
+        image: cxscssa.azurecr.io/tap-build/workloads/friday-java-server-app-jeremy@sha256:25941913dfa4cd68e72772250bfd84132742cdb262e286fc0e4f51545f8e596f
         livenessProbe:
           httpGet:
             path: /livez
