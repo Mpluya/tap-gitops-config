@@ -16,6 +16,7 @@ spec:
   template:
     metadata:
       annotations:
+        apps.tanzu.vmware.com/correlationid: https://github.com/x95castle1/spring-rest-security-232.git?sub_path=/
         autoscaling.knative.dev/minScale: "1"
         boot.spring.io/version: 2.3.2.RELEASE
         conventions.carto.run/applied-conventions: |-
@@ -61,6 +62,13 @@ spec:
           periodSeconds: 5
         resources: {}
         securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          runAsNonRoot: true
           runAsUser: 1000
+          seccompProfile:
+            type: RuntimeDefault
       serviceAccountName: default
 
