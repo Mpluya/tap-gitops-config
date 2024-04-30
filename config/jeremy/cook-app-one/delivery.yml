@@ -16,6 +16,7 @@ spec:
   template:
     metadata:
       annotations:
+        apps.tanzu.vmware.com/correlationid: https://github.com/x95castle1/cook-app-one?sub_path=/
         autoscaling.knative.dev/minScale: "1"
         boot.spring.io/version: 3.0.1
         conventions.carto.run/applied-conventions: |-
@@ -54,7 +55,7 @@ spec:
           value: stg
         - name: JAVA_TOOL_OPTIONS
           value: -Dmanagement.endpoint.health.probes.add-additional-paths="true" -Dmanagement.health.probes.enabled="true" -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
-        image: cxscssa.azurecr.io/tap-build/workloads/cook-app-one-jeremy@sha256:ad71eadd210a65a77013e78cbe2338184dc37889300037b0728fdca4609ac068
+        image: cxscssa.azurecr.io/tap-build/workloads/cook-app-one-jeremy@sha256:addada196674fd09f1570eafb1ad1a4ca4bbaa2ac8ee31e50a447a048414a797
         livenessProbe:
           httpGet:
             path: /livez
@@ -71,6 +72,18 @@ spec:
             scheme: HTTP
         resources: {}
         securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          runAsNonRoot: true
           runAsUser: 1000
+          seccompProfile:
+            type: RuntimeDefault
+        startupProbe:
+          httpGet:
+            path: /readyz
+            port: 8080
+            scheme: HTTP
       serviceAccountName: default
 
