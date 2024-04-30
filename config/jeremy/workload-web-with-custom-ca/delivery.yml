@@ -43,7 +43,7 @@ spec:
       - env:
         - name: JAVA_TOOL_OPTIONS
           value: -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
-        image: cxscssa.azurecr.io/tap-build/workloads/workload-web-with-custom-ca-jeremy@sha256:aec207b59b73b603fc49e5191d171ef896d6238cb11c2ab76e8a0ce94d66c741
+        image: cxscssa.azurecr.io/tap-build/workloads/workload-web-with-custom-ca-jeremy@sha256:af41a87f7a19212de746421495e4716dd6cd958516071c17b0c443ab981df0f9
         livenessProbe:
           httpGet:
             path: /actuator/health
