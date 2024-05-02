@@ -24,8 +24,9 @@ spec:
         boot.spring.io/actuator: http://:8081/actuator
         boot.spring.io/version: 3.1.3
         conventions.carto.run/applied-conventions: |-
-          appliveview-sample/app-live-view-appflavour-check
           spring-boot-convention/auto-configure-actuators-check
+          spring-boot-convention/is-native-app-check
+          spring-boot-convention/is-prometheus-enabled-check
           spring-boot-convention/spring-boot
           spring-boot-convention/spring-boot-graceful-shutdown
           spring-boot-convention/spring-boot-web
@@ -58,7 +59,7 @@ spec:
       - env:
         - name: JAVA_TOOL_OPTIONS
           value: -Dmanagement.endpoint.health.probes.add-additional-paths="true" -Dmanagement.endpoint.health.show-details="always" -Dmanagement.endpoints.web.base-path="/actuator" -Dmanagement.endpoints.web.exposure.include="*" -Dmanagement.health.probes.enabled="true" -Dmanagement.server.port="8081" -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
-        image: cxscssa.azurecr.io/tap-build/workloads/java-rest-service-aws-mae@sha256:bb93b3e7ed048d753c5d88773a8e84b421a97549202e66e2433075598861d32c
+        image: cxscssa.azurecr.io/tap-build/workloads/java-rest-service-aws-mae@sha256:acde3cafab18d264dae6642540d73d238a19c01d007090ccb9abacc512b5dd84
         livenessProbe:
           httpGet:
             path: /livez
