@@ -21,8 +21,9 @@ spec:
         autoscaling.knative.dev/minScale: "1"
         boot.spring.io/version: 2.7.0
         conventions.carto.run/applied-conventions: |-
-          appliveview-sample/app-live-view-appflavour-check
           spring-boot-convention/auto-configure-actuators-check
+          spring-boot-convention/is-native-app-check
+          spring-boot-convention/is-prometheus-enabled-check
           spring-boot-convention/spring-boot
           spring-boot-convention/spring-boot-graceful-shutdown
           spring-boot-convention/spring-boot-web
@@ -43,7 +44,7 @@ spec:
           value: -Dorg.springframework.cloud.bindings.boot.enable="true" -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
         - name: SPRING_PROFILES_ACTIVE
           value: cloud
-        image: cxscssa.azurecr.io/tap-build/workloads/sso-example-app-tap-jeremy@sha256:a813b40666f305bd2cab4052c42644495c1957d56e59cda9eb47b863a895d8a8
+        image: cxscssa.azurecr.io/tap-build/workloads/sso-example-app-tap-jeremy@sha256:b3094f9bd4bceb1ae4c8773066bd4c042aaedb2a6cdf49b830a9328254fc6263
         name: workload
         ports:
         - containerPort: 8080
