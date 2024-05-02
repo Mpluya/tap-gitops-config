@@ -20,10 +20,11 @@ spec:
         autoscaling.knative.dev/minScale: "1"
         boot.spring.io/version: 2.3.2.RELEASE
         conventions.carto.run/applied-conventions: |-
-          appliveview-sample/app-live-view-appflavour-check
           multi-purpose-convention/x95castle1.org-readiness
           multi-purpose-convention/x95castle1.org-liveness
           spring-boot-convention/auto-configure-actuators-check
+          spring-boot-convention/is-native-app-check
+          spring-boot-convention/is-prometheus-enabled-check
           spring-boot-convention/spring-boot
           spring-boot-convention/spring-boot-graceful-shutdown
           spring-boot-convention/spring-boot-web
@@ -43,7 +44,7 @@ spec:
       - env:
         - name: JAVA_TOOL_OPTIONS
           value: -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
-        image: cxscssa.azurecr.io/tap-build/workloads/workload-web-with-custom-ca-jeremy@sha256:af41a87f7a19212de746421495e4716dd6cd958516071c17b0c443ab981df0f9
+        image: cxscssa.azurecr.io/tap-build/workloads/workload-web-with-custom-ca-jeremy@sha256:11f4ee145df019758c3b7e18d4f531f6bf02915509dc2f8c64d5e78602d26084
         livenessProbe:
           httpGet:
             path: /actuator/health
