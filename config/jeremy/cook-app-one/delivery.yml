@@ -20,8 +20,9 @@ spec:
         autoscaling.knative.dev/minScale: "1"
         boot.spring.io/version: 3.0.1
         conventions.carto.run/applied-conventions: |-
-          appliveview-sample/app-live-view-appflavour-check
           spring-boot-convention/auto-configure-actuators-check
+          spring-boot-convention/is-native-app-check
+          spring-boot-convention/is-prometheus-enabled-check
           spring-boot-convention/spring-boot
           spring-boot-convention/spring-boot-graceful-shutdown
           spring-boot-convention/spring-boot-web
@@ -55,7 +56,7 @@ spec:
           value: stg
         - name: JAVA_TOOL_OPTIONS
           value: -Dmanagement.endpoint.health.probes.add-additional-paths="true" -Dmanagement.health.probes.enabled="true" -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
-        image: cxscssa.azurecr.io/tap-build/workloads/cook-app-one-jeremy@sha256:892f64209c68fa31731f34c86948d6693c414016065d7b5034dd3b390f27beaf
+        image: cxscssa.azurecr.io/tap-build/workloads/cook-app-one-jeremy@sha256:4359870144606aeb861ec9e873bfb16618edd986beb5fb9c9ff1893d2c877e65
         livenessProbe:
           httpGet:
             path: /livez
