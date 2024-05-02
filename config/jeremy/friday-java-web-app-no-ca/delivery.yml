@@ -19,8 +19,9 @@ spec:
         apps.tanzu.vmware.com/correlationid: https://github.com/x95castle1/friday-java-web-app?sub_path=/
         boot.spring.io/version: 2.7.18
         conventions.carto.run/applied-conventions: |-
-          appliveview-sample/app-live-view-appflavour-check
           spring-boot-convention/auto-configure-actuators-check
+          spring-boot-convention/is-native-app-check
+          spring-boot-convention/is-prometheus-enabled-check
           spring-boot-convention/spring-boot
           spring-boot-convention/spring-boot-graceful-shutdown
           spring-boot-convention/spring-boot-web
